@@ -7,11 +7,62 @@
 
 import SwiftUI
 
-//MARK: - Properties
 
 
-//MARK: - Body
 struct ContentView: View {
+    //MARK: - Properties
+    
+    let symbols = ["gfx-bell", "gfx-cherry", "gfx-coin", "gfx-grape", "gfx-seven", "gfx-strawberry"]
+    
+    @State private var highscore: Int = 0
+    @State private var coins: Int = 100
+    @State private var betAmount: Int = 10
+    @State private var reels: Array = [0, 1, 2]
+    @State private var showingInfoView: Bool = false
+    
+    //MARK: - Functions
+    // Spin the Reels
+    func spinReels() {
+//        reels[0] = Int.random(in: 0...symbols.count - 1)
+//        reels[1] = Int.random(in: 0...symbols.count - 1)
+//        reels[2] = Int.random(in: 0...symbols.count - 1)
+        reels = reels.map({ _ in
+            Int.random(in: 0...symbols.count - 1)
+        })
+    }
+    
+    // Check the Winning
+    func checkWinning() {
+        if reels[0] == reels[1] && reels[1] == reels[2] && reels[0] == reels[2] {
+            // Player Wins
+            playerWins()
+            
+            // New Highscore
+            if coins > highscore {
+                newHighScore()
+            }
+            
+        } else {
+            // Player Loses
+            playerLoses()
+        }
+    }
+
+    func playerWins() {
+        coins += betAmount * 10
+    }
+    
+    func newHighScore() {
+        highscore = coins
+    }
+    
+    func playerLoses() {
+        coins -= betAmount
+    }
+    
+    // Game is over
+    
+    //MARK: - Body
     var body: some View {
         ZStack {
             //MARK: - Background
@@ -33,7 +84,7 @@ struct ContentView: View {
                             .scoreLabelStyle()
                             .multilineTextAlignment(.trailing)
                         
-                        Text("100")
+                        Text("\(coins)")
                             .scoreNumberStyle()
                             .modifier(ScoreNumberModifier())
                     }
@@ -42,7 +93,7 @@ struct ContentView: View {
                     Spacer()
                     
                     HStack {
-                        Text("200")
+                        Text("\(highscore)")
                             .scoreNumberStyle()
                             .modifier(ScoreNumberModifier())
                         
@@ -56,10 +107,11 @@ struct ContentView: View {
                 //MARK: - Slot Machine
                 
                 VStack(alignment: .center, spacing: 0) {
-                    //MARK: - Reel #1
+                    
+                        //MARK: - Reel #1
                     ZStack {
                         ReelView()
-                        Image("gfx-bell")
+                        Image(symbols[reels[0]])
                             .resizable()
                             .modifier(ImageModifier())
                     }
@@ -68,7 +120,7 @@ struct ContentView: View {
                         //MARK: - Reel #2
                         ZStack {
                             ReelView()
-                            Image("gfx-seven")
+                            Image(symbols[reels[1]])
                                 .resizable()
                                 .modifier(ImageModifier())
                         }
@@ -78,7 +130,7 @@ struct ContentView: View {
                         //MARK: - Reel #3
                         ZStack {
                             ReelView()
-                            Image("gfx-cherry")
+                            Image(symbols[reels[2]])
                                 .resizable()
                                 .modifier(ImageModifier())
                         }
@@ -88,7 +140,11 @@ struct ContentView: View {
                     
                     //MARK: - Spin Button
                     Button(action: {
-                        print("Spin the reels")
+                        // Spin the Reels
+                        self.spinReels()
+                        
+                        // Check Winning
+                        self.checkWinning()
                     }) {
                         Image("gfx-spin")
                             .renderingMode(.original)
@@ -156,7 +212,7 @@ struct ContentView: View {
             .overlay(
                 // Info
                 Button(action: {
-                    print("Info View")
+                    self.showingInfoView = true
                 }) {
                     Image(systemName: "info.circle")
                 }
@@ -168,6 +224,9 @@ struct ContentView: View {
             
             //MARK: - Popup
         } // ZStack
+        .sheet(isPresented: $showingInfoView) {
+            InfoView()
+        }
     }
 }
 
