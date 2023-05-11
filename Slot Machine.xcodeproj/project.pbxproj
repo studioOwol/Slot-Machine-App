@@ -20,6 +20,9 @@
 		71A5735E2A0CB9D20033C7DC /* spin.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 71A573562A0CB9D20033C7DC /* spin.mp3 */; };
 		71A5735F2A0CB9D20033C7DC /* game-over.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 71A573572A0CB9D20033C7DC /* game-over.mp3 */; };
 		71A573672A0CBBDD0033C7DC /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71A573662A0CBBDD0033C7DC /* Launch Screen.storyboard */; };
+		71A573692A0CBFA70033C7DC /* LogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A573682A0CBFA70033C7DC /* LogoView.swift */; };
+		71A5736B2A0CBFE10033C7DC /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A5736A2A0CBFE10033C7DC /* Modifiers.swift */; };
+		71A5736D2A0CC1F60033C7DC /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A5736C2A0CC1F60033C7DC /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +41,9 @@
 		71A573572A0CB9D20033C7DC /* game-over.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "game-over.mp3"; sourceTree = "<group>"; };
 		71A573632A0CBA520033C7DC /* Slot-Machine-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Slot-Machine-Info.plist"; sourceTree = SOURCE_ROOT; };
 		71A573662A0CBBDD0033C7DC /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		71A573682A0CBFA70033C7DC /* LogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoView.swift; sourceTree = "<group>"; };
+		71A5736A2A0CBFE10033C7DC /* Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifiers.swift; sourceTree = "<group>"; };
+		71A5736C2A0CC1F60033C7DC /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				71A573442A0CB8A40033C7DC /* ContentView.swift */,
+				71A573682A0CBFA70033C7DC /* LogoView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -116,6 +123,8 @@
 		71A573622A0CB9EF0033C7DC /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				71A5736A2A0CBFE10033C7DC /* Modifiers.swift */,
+				71A5736C2A0CC1F60033C7DC /* Extensions.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -199,7 +208,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71A5736D2A0CC1F60033C7DC /* Extensions.swift in Sources */,
+				71A5736B2A0CBFE10033C7DC /* Modifiers.swift in Sources */,
 				71A573452A0CB8A40033C7DC /* ContentView.swift in Sources */,
+				71A573692A0CBFA70033C7DC /* LogoView.swift in Sources */,
 				71A573432A0CB8A40033C7DC /* Slot_MachineApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
